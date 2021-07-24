@@ -14,7 +14,6 @@ $action = 'default';
 if ( in_array($_SERVER['REQUEST_METHOD'], ['POST', 'PUT']) ) {
   $action = 'upload';
 } else {
-  
   # load documentation, if we have the docs repo cloned
   if ( is_file($docs_handler) ) {
     $has_docs = true;
