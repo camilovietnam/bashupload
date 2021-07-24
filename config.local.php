@@ -1,7 +1,6 @@
 <?php
 
 
-
 # Load local config file (ignored in GIT) if available
 if ( (basename(__FILE__) != 'config.local.php') && is_file(__DIR__ . '/config.local.php') ) {
   require __DIR__ . '/config.local.php';
@@ -9,9 +8,8 @@ if ( (basename(__FILE__) != 'config.local.php') && is_file(__DIR__ . '/config.lo
 }
 
 
-
 # where files will recide (make sure it has writable permissions)
-define('STORAGE', '/var/files');
+define('STORAGE', '/home/ec2-user/bashupload/files');
 
 # should we redirect user to SSL version of the website (only on GET requests)
 define('FORCE_SSL', false);

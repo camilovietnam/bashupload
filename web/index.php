@@ -18,7 +18,6 @@ if ( in_array($_SERVER['REQUEST_METHOD'], ['POST', 'PUT']) ) {
   if ( is_file($docs_handler) ) {
     $has_docs = true;
     $doc = include $docs_handler;
-    
     if ( $doc ) {
       $action = 'docs';
     }
