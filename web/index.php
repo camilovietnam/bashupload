@@ -7,17 +7,13 @@ require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../lib.php';
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-
-
 # Route
 $docs_handler = __DIR__ . '/../../bashupload-docs/index.php';
 $action = 'default';
 
 if ( in_array($_SERVER['REQUEST_METHOD'], ['POST', 'PUT']) ) {
-  
   $action = 'upload';
-}
-else {
+} else {
   
   # load documentation, if we have the docs repo cloned
   if ( is_file($docs_handler) ) {
