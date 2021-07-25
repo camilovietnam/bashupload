@@ -8,7 +8,8 @@ if ( (basename(__FILE__) != 'config.local.php') && is_file(__DIR__ . '/config.lo
   return;
 }
 
-
+# what is the main uri of the script?
+define('BASE_URI', '/bashupload');
 
 # where files will recide (make sure it has writable permissions)
 define('STORAGE', '/var/files');

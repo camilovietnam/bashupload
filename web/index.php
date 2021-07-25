@@ -24,7 +24,7 @@ if ( in_array($_SERVER['REQUEST_METHOD'], ['POST', 'PUT']) ) {
   // }
   
   // # everything else is a possible file to download
-  if ( !isset($doc) && ($uri != '/') ) {
+  if ( !isset($doc) && ($uri != BASE_URI) ) {
     $action = 'file';
   }
 }
