@@ -10,8 +10,9 @@ if ($f = fopen('php://input', 'r')) {
 # Next, let's move uploaded files to the storage
 $id = gen_id();
 
-function readFileData($f): void
+function readFileData($f, $uri): void
 {
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $name = trim($uri, '/');
 
     if (!$name) {
