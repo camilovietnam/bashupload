@@ -5,7 +5,7 @@
 
 
 # file stats
-$file = explode('/', trim($uri, '/'));
+$file = explode('/', trim($uri, '/bashupload/'));
 $file = ['id' => $file[0], 'name' => $file[1], 'path' => '/' . $file[0] . '-' . $file[1], 'extension' => strtolower(pathinfo($file[1], PATHINFO_EXTENSION))];
 
 $file_path = STORAGE . '/' . md5($file['path']);
