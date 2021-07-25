@@ -8,8 +8,11 @@ if ( (basename(__FILE__) != 'config.local.php') && is_file(__DIR__ . '/config.lo
 }
 
 
-# what is the main uri of the WEB folder?
+# what is the main uri of the WEB folder? Must include a trailing slash
 define('BASE_WEB', '/bashupload/web/');
+
+# what is the uri of the FILES folder? Must include a trailing slash
+define('BASE_FILES', '/bashupload/files/');
 
 # where files will recide (make sure it has writable permissions)
 define('STORAGE', '/home/ec2-user/bashupload/files');
