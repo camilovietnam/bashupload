@@ -44,13 +44,19 @@ function upload_files(files) {
         for (var file_key in files) {
           var file_progress = document.querySelector("#" + file_key);
           file_progress.innerHTML =
-              '<a target="_blank" href="' +
-              files[file_key].url +
-              '">' +
-              files[file_key].url +
-              "</a> " +
-              files[file_key].size +
-              " bytes";
+              `File uploaded: 
+                <a target="_blank" href="${files[file_key].url}">
+                ${files[file_key].url}
+                </a> ${files[file_key].size} bytes
+                `;
+
+              // '<a target="_blank" href="' +
+              // files[file_key].url +
+              // '">' +
+              // files[file_key].url +
+              // "</a> " +
+              // files[file_key].size +
+              // " bytes";
           file_progress.classList.remove("uploading");
         }
 
