@@ -19,14 +19,12 @@
 <body>
 	<div id="content">
 		<header>
-			<?php if ( $uri != BASE_WEB ) { ?>
-				<h1>Scuti's bashupload</h1>
-				<p>
-				  Upload files directly from the command line for easily sharing. <?=file_upload_max_size()?> max.
-				  <br>
-				  Files are stored for <?=EXPIRE_DAYS?> days<?=MAX_DOWNLOADS > 1 ? '' : ' and can be downloaded only once' ?>.
-				</p>
-			<?php } ?>
+			<h1>Scuti's bashupload</h1>
+			<p>
+				Upload files directly from the command line for easily sharing. <?=file_upload_max_size()?> max.
+				<br>
+				Files are stored for <?=EXPIRE_DAYS?> days<?=MAX_DOWNLOADS > 1 ? '' : ' and can be downloaded only once' ?>.
+			</p>
 		</header>
 
 		<?php include __DIR__ . "/{$action}.phtml"; ?>
