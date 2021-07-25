@@ -67,10 +67,11 @@ footer {
 	text-align: center;
 	line-height: 150%;
 	background: #fff;
-	margin-top: -50px;
 	height: 20px;
 }
-
+footer img {
+	margin-bottom: 10px;
+}
 header {
 	font-size: 1em;
 	padding: 1em 0;
