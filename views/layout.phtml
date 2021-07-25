@@ -1,14 +1,14 @@
 <html>
 
 <head>
-  <title><?=$title ? : 'bashupload / upload files from command line'?></title>
+  <title><?=isset($title) ? $title : 'bashupload / upload files from command line'?></title>
   
 	<link rel="stylesheet" href="/styles.css?<?=STATIC_VERSION?>">
 	<script src="/script.js?<?=STATIC_VERSION?>"></script>
 	
 	<?php if ( WEB ) { ?>
   	<link rel="icon" href="/logo.png">
-  	<meta name="description" content="<?=$description ? : 'Upload files from command line to cloud and then download to desktop or server'?>">
+  	<meta name="description" content="<?=isset($description) ? $description : 'Upload files from command line to cloud and then download to desktop or server'?>">
   	<meta name="keywords" content="Upload from command line, upload using bash, upload file to server, download file from server">
   	<meta name="author" content="zeroapps.dev">
 	<?php } ?>
