@@ -9,7 +9,7 @@ if ( (basename(__FILE__) != 'config.local.php') && is_file(__DIR__ . '/config.lo
 
 
 # what is the main uri of the WEB folder?
-define('BASE_WEB', '/bashupload/web');
+define('BASE_WEB', '/bashupload/web/');
 
 # where files will recide (make sure it has writable permissions)
 define('STORAGE', '/home/ec2-user/bashupload/files');
