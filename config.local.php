@@ -14,7 +14,7 @@ define('BASE_WEB', '/bashupload/web/');
 # what is the uri of the FILES folder? Must include a trailing slash
 define('BASE_FILES', '/bashupload/files/');
 
-# where files will recide (make sure it has writable permissions)
+# where files will be stored (make sure it has writable permissions)
 define('STORAGE', '/home/ec2-user/bashupload/files');
 
 # should we redirect user to SSL version of the website (only on GET requests)
