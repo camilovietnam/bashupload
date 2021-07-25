@@ -1,8 +1,8 @@
 // Upload file from browser
 function upload() {
-  var ins = document.getElementById("inputfile").files.length;
-  var files = [];
-  for (var x = 0; x < ins; x++) {
+  let ins = document.getElementById("inputfile").files.length;
+  let files = [];
+  for (let x = 0; x < ins; x++) {
     files.push(document.getElementById("inputfile").files[x]);
   }
   upload_files(files);
@@ -14,11 +14,11 @@ file_id = 0;
 function upload_files(files) {
   let url = "/bashupload/web/";
   let formData = new FormData();
-  var uploaded = document.getElementById("uploaded");
+  let uploaded = document.getElementById("uploaded");
   formData.append("json", "true");
 
-  for (var i = 0; i < files.length; i++) {
-    var node = document.createElement("li");
+  for (let i = 0; i < files.length; i++) {
+    let node = document.createElement("li");
     node.innerText = "Uploading...";
     node.classList.add("uploading");
     node.id = "file_" + ++file_id;
@@ -31,18 +31,18 @@ function upload_files(files) {
     body: formData,
   })
     .then((r) => {
-      var dropper = document.getElementById("dropper");
-      var dropzone = document.getElementById("dropzone");
+      let dropper = document.getElementById("dropper");
+      let dropzone = document.getElementById("dropzone");
       dropper.classList.remove("active");
       dropzone.classList.remove("active");
 
       return r.json();
     })
     .then((json) => {
-      var files = json;
+      let files = json;
 
-      for (var file_key in files) {
-        var file_progress = document.querySelector("#" + file_key);
+      for (let file_key in files) {
+        let file_progress = document.querySelector("#" + file_key);
         file_progress.innerHTML =
           '<a target="_blank" href="' +
           files[file_key].url +
@@ -51,22 +51,21 @@ function upload_files(files) {
           "</a> " +
           files[file_key].size +
           " bytes";
-        file_progress.classList.remove("uploading");
       }
 
-      var elements = document.getElementsByClassName("uploading");
-      for (var i = 0; i < elements.length; i++) {
+      let elements = document.getElementsByClassName("uploading");
+      for (let i = 0; i < elements.length; i++) {
         elements[i].innerText = "Hmm";
       }
     })
     .catch(() => {
-      var dropper = document.getElementById("dropper");
-      var dropzone = document.getElementById("dropzone");
+      let dropper = document.getElementById("dropper");
+      let dropzone = document.getElementById("dropzone");
       dropper.classList.remove("active");
       dropzone.classList.remove("active");
 
-      var elements = document.getElementsByClassName("uploading");
-      for (var i = 0; i < elements.length; i++) {
+      let elements = document.getElementsByClassName("uploading");
+      for (let i = 0; i < elements.length; i++) {
         elements[i].innerText = "Failed :(";
       }
     });
@@ -134,7 +133,7 @@ function init_uploads() {
 
 // Utilities
 function copy_code_to_clipboard() {
-  var txt = document.getElementById("copy");
+  let txt = document.getElementById("copy");
   txt.value = document.querySelector("code").innerText;
 
   txt.select();
