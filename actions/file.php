@@ -40,7 +40,7 @@ else if ( $file['size'] )
 	header('Content-Disposition: attachment; filename=' . $file['name']); 
 	header('Content-Transfer-Encoding: binary');
 	header('Content-Length: ' . $file['size']);
-	header('X-Accel-Redirect: /files/' . md5($file['path']));
+	header('X-Accel-Redirect: /bashupload/files/' . md5($file['path']));
 	readfile($file_path);
 	exit;
 }
