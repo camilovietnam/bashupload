@@ -21,7 +21,7 @@ define('FORCE_SSL', false);
 define('EXPIRE_DAYS', 3);
 
 # How many downloads should we allow?
-define('MAX_DOWNLOADS', 1);
+define('MAX_DOWNLOADS', 5);
 
 # Our website host
 define('HOST', @$_SERVER['HTTP_HOST']);

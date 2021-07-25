@@ -5,7 +5,6 @@
 require __DIR__ . '/../config.php';
 
 
-
 # delete all expired files
 exec('find ' . realpath(STORAGE) . ' -type f -mtime +' . EXPIRE_DAYS . ' -delete');
 
