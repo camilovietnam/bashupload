@@ -33,7 +33,7 @@ if ( in_array($_SERVER['REQUEST_METHOD'], ['POST', 'PUT']) ) {
 
 # Execute routed handler
 $accept = explode(',', $_SERVER['HTTP_ACCEPT']);
-if ( $_POST['json'] == 'true' ) $renderer = 'json';
+if ( isset($_POST['json']) && $_POST['json'] == 'true' ) $renderer = 'json';
 else if ( in_array('text/html', $accept) ) $renderer = 'html';
 else $renderer = 'txt';
 
