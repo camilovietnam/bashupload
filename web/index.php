@@ -15,18 +15,18 @@ if ( in_array($_SERVER['REQUEST_METHOD'], ['POST', 'PUT']) ) {
   $action = 'upload';
 } else {
   # load documentation, if we have the docs repo cloned
-  if ( is_file($docs_handler) ) {
-    $has_docs = true;
-    $doc = include $docs_handler;
-    if ( $doc ) {
-      $action = 'docs';
-    }
-  }
+  // if ( is_file($docs_handler) ) {
+  //   $has_docs = true;
+  //   $doc = include $docs_handler;
+  //   if ( $doc ) {
+  //     $action = 'docs';
+  //   }
+  // }
   
-  # everything else is a possible file to download
-  if ( !$doc && ($uri != '/') ) {
+  // # everything else is a possible file to download
+  // if ( !isset($doc) && ($uri != '/') ) {
     $action = 'file';
-  }
+  // }
 }
 
 
