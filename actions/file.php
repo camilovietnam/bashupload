@@ -51,6 +51,7 @@ function display404(): void
 
 function extractFileData(): array
 {
+	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	$file = explode('/', trim($uri, BASE_FILES));
 	
 	return [
