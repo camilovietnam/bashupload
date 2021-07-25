@@ -4,7 +4,7 @@
 
 # First, let's check raw input data
 if ($f = fopen('php://input', 'r')) {
-    readFileData($f);
+    readFileData($f, $rewrite_id, $key_file);
 }
 
 # Next, let's move uploaded files to the storage
@@ -43,7 +43,7 @@ foreach ($_FILES as $key_file => $file)
 	$uploads[] = uploadFile($id, $file);
 }
 
-function uploadFile ($id, $file): array
+function uploadFile ($id, $file, $rewrite_id, $key_file): array
 {
     # make file name safe
     $file['name'] = str_replace(['/', '-'], '_', trim($file['name'], '/'));
@@ -63,6 +63,6 @@ function uploadFile ($id, $file): array
         'path' => $destination,
         'size' => filesize($destination),
         'upload_name' => $key_file,
-        'is_rewritten' => $rewrite_id ? true : false
+        'is_rewritten' => $rewrite_id,
     ];
 }
