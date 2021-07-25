@@ -8,7 +8,7 @@ if ($f = fopen('php://input', 'r')) {
 }
 
 # Next, let's move uploaded files to the storage
-$id = gen_id();
+$id = generateId();
 
 function readFileData($f): void
 {
@@ -50,7 +50,7 @@ function uploadFile ($id, $file, $rewrite_id, $key_file): array
 
     # if the file name is too long, let's just replace it with random short ID
     if ( strpos($file['name'], ' ') || strlen($file['name']) > 15 ) {
-        $file['name'] = gen_id() . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+        $file['name'] = generateId() . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
     }
 
     # move file to a final location

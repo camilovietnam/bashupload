@@ -2,10 +2,9 @@
 
 # Utilities
 
-
-
 # Get system MIME types list
-function system_extension_mime_types() {
+function system_extension_mime_types(): array
+{
     $out = array();
     $file = fopen('/etc/mime.types', 'r');
     
@@ -23,23 +22,23 @@ function system_extension_mime_types() {
     return $out;
 }
 
-
 # Get file MIME type by its extension
-function system_extension_mime_type($file) {
+function system_extension_mime_type($file): ?string
+{
     static $types;
     
     if(!isset($types)) $types = system_extension_mime_types();
     $ext = pathinfo($file, PATHINFO_EXTENSION);
-    
+
     if(!$ext) $ext = $file;
     $ext = strtolower($ext);
     
-    return isset($types[$ext]) ? $types[$ext] : null;
+    return $types[$ext] ?? null;
 }
 
 
 # generate random file prefix-id
-function gen_id()
+function generateId(): string
 {
     $id   = '';
     $abc  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -49,58 +48,62 @@ function gen_id()
 
     $max  = strlen($abc);
 
-    for ($i=0; $i < 5; $i++) $id .= $abc[mt_rand(0, $max-1)];
+    for ($i=0; $i < 5; $i++) {
+        $id .= $abc[mt_rand(0, $max - 1)];
+    }
 
     return $id;
 }
 
 
 # get max file upload size from settings
-function file_upload_max_size() {
-  static $max_size = -1;
+function file_upload_max_size(): string
+{
+    static $max_size = -1;
 
-  if ($max_size < 0) {
-    // Start with post_max_size.
-    $post_max_size = parse_ini_bytes_size(ini_get('post_max_size'));
-    if ($post_max_size > 0) {
-      $max_size = $post_max_size;
+    if ($max_size < 0) {
+        // Start with post_max_size.
+        $post_max_size = parse_ini_bytes_size(ini_get('post_max_size'));
+        if ($post_max_size > 0) {
+            $max_size = $post_max_size;
+        }
+
+        // If upload_max_size is less, then reduce. Except if upload_max_size is
+        // zero, which indicates no limit.
+        $upload_max = parse_ini_bytes_size(ini_get('upload_max_filesize'));
+        if ($upload_max > 0 && $upload_max < $max_size) {
+            $max_size = $upload_max;
+        }
     }
 
-    // If upload_max_size is less, then reduce. Except if upload_max_size is
-    // zero, which indicates no limit.
-    $upload_max = parse_ini_bytes_size(ini_get('upload_max_filesize'));
-    if ($upload_max > 0 && $upload_max < $max_size) {
-      $max_size = $upload_max;
+    // Convert to GB
+    $max_size = $max_size / (1024 * 1024 * 1024);
+    if ($max_size < 1) {
+        $max_size = round($max_size, 3);
+    } else {
+        $max_size = round($max_size);
     }
-  }
-  
-  // Convert to GB
-  $max_size = $max_size / (1024 * 1024 * 1024);
-  if ( $max_size < 1 ) {
-    $max_size = round($max_size, 3);
-  }
-  else {
-    $max_size = round($max_size);
-  }
-  
-  return $max_size . 'G';
+
+    return $max_size . 'G';
 }
 
 # parse php.ini size value
-function parse_ini_bytes_size($size) {
-  $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
-  $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
-  if ($unit) {
-    // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
-    return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
-  }
-  else {
-    return round($size);
-  }
+function parse_ini_bytes_size($size): float
+{
+    $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
+    $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
+
+    if ($unit) {
+        // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
+        return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
+    } else {
+        return round($size);
+    }
 }
 
 # Dump and die
-function dd()
+function dd(): void
 {
-   array_map(function($x) { var_dump($x); }, func_get_args()); die;
+   array_map(function($x) { var_dump($x); }, func_get_args());
+   die;
 }
