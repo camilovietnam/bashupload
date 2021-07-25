@@ -77,10 +77,6 @@ header {
 	padding: 1em 0;
 }
 
-#focus {
-  margin-top: 20vh;
-}
-
 #upload-instructions {
 	text-align: center;
 }
@@ -131,8 +127,6 @@ code:hover {
 	max-width: 100%;
 }
 
-
-
 /* Uploaded files list */
 
 #uploaded {
@@ -148,8 +142,6 @@ code:hover {
 	padding: 1em 0 1em 0;
 	border-top: 1px solid #ddd;
 }
-
-
 
 /* Drag&Drop component */
 
@@ -199,16 +191,12 @@ code:hover {
   border-color: #FF4136;
 }
 
-
-
 /* Docs markers */
 
 b.c1 { color: #FF851B; }
 b.c2 { color: #7FDBFF; }
 b.c3 { color: #2ECC40; }
 b.c4 { color: #FFDC00; }
-
-
 
 /* Mobile version */
 
