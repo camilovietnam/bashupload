@@ -4,7 +4,7 @@
 
 # First, let's check raw input data
 if ($f = fopen('php://input', 'r')) {
-    readFileData($f, $rewrite_id, $key_file);
+    readFileData($f);
 }
 
 # Next, let's move uploaded files to the storage
@@ -40,7 +40,7 @@ function readFileData($f): void
 foreach ($_FILES as $key_file => $file)
 {
     # Upload and register data
-	$uploads[] = uploadFile($id, $file);
+	$uploads[] = uploadFile($id, $file, $rewrite_id, $key_file);
 }
 
 function uploadFile ($id, $file, $rewrite_id, $key_file): array
