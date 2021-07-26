@@ -21,7 +21,7 @@ define('STORAGE', '/home/ec2-user/bashupload/files');
 define('FORCE_SSL', false);
 
 # How many days should we keep files?
-define('EXPIRE_DAYS', 3);
+define('EXPIRE_DAYS', 15);
 
 # How many downloads should we allow?
 define('MAX_DOWNLOADS', 5);
