@@ -77,14 +77,14 @@ function file_upload_max_size(): string
     }
 
     // Convert to GB
-    $max_size = $max_size / (1024 * 1024 * 1024);
+    $max_size = $max_size / (1024 * 1024);
     if ($max_size < 1) {
         $max_size = round($max_size, 3);
     } else {
         $max_size = round($max_size);
     }
 
-    return $max_size . 'G';
+    return $max_size . 'MB';
 }
 
 # parse php.ini size value
