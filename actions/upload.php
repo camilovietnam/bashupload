@@ -12,19 +12,10 @@ $id = generateId();
 
 function readFileData($f): void
 {
-    // @todo: Remove if the code works (aug 1)
-//    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-//    $name = trim($uri, '/');
-//
-//    if (!$name) {
-//        $name = uniqid();
-//    }
-
     $name = uniqid();
-
     $tmp = tempnam('/var/files/tmp', 'upload');
-
     $ftmp = fopen($tmp, 'w');
+
     while (!feof($f)) {
         fputs($ftmp, fgets($f));
     }

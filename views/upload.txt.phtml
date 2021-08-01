@@ -18,16 +18,14 @@ if (isset($uploads) && $uploads) {
         $total += $file['size'];
     }
 
-	echo 'Uploaded '
-        . count($uploads)
-        . ' file, '
-        . number_format($total, 0, '.', ' ')
-        . ' bytes'
-        . "\n\n";
+	$countUploads = count($uploads);
+    $countBytes = number_format($total, 0, '.', ' ');
+
+	echo "Uploaded ($countUploads) files. [$countBytes bytes]\n\n";
 
 	foreach ($uploads as $file) {
 		$url = $_SERVER['REQUEST_SCHEME'] . '://' . HOST . '/bashupload/files/' . $file['id'] . '/' . $file['name'];
-		echo "wget {$url}" . "\n\n";
+		echo "Download using: wget {$url}" . "\n\n";
 	}
 	
 	echo '=========================';
