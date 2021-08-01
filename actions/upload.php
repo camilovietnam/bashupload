@@ -12,12 +12,15 @@ $id = generateId();
 
 function readFileData($f): void
 {
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $name = trim($uri, '/');
+    // @todo: Remove if the code works (aug 1)
+//    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+//    $name = trim($uri, '/');
+//
+//    if (!$name) {
+//        $name = uniqid();
+//    }
 
-    if (!$name) {
-        $name = uniqid();
-    }
+    $name = uniqid();
 
     $tmp = tempnam('/var/files/tmp', 'upload');
 
@@ -37,19 +40,23 @@ function readFileData($f): void
     }
 }
 
-foreach ($_FILES as $key_file => $file)
+uploadFiles($id, $rewrite_id);
+
+function uploadFiles($id, $rewriteID)
 {
-    # Upload and register data
-	$uploads[] = uploadFile($id, $file, $rewrite_id, $key_file);
+    foreach($_FILES as $keyFile => $file) {
+        # Upload and register data
+        $uploads[] = uploadFile($id, $file, $rewriteID, $keyFile);
+    }
 }
 
-function uploadFile ($id, $file, $rewriteId, $keyFile): array
+function uploadFile($id, $file, $rewriteId, $keyFile): array
 {
     # make file name safe
     $file['name'] = str_replace(['/', '-'], '_', trim($file['name'], '/'));
 
     # if the file name is too long, let's just replace it with random short ID
-    if ( strpos($file['name'], ' ') || strlen($file['name']) > 15 ) {
+    if (strpos($file['name'], ' ') || strlen($file['name']) > 15) {
         $file['name'] = generateId() . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
     }
 

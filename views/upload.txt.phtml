@@ -26,7 +26,7 @@ if (isset($uploads) && $uploads) {
         . "\n\n";
 
 	foreach ($uploads as $file) {
-		$url = $_SERVER['REQUEST_SCHEME'] . '://' . HOST . '/bashupload/files' . $file['id'] . '/' . $file['name'];
+		$url = $_SERVER['REQUEST_SCHEME'] . '://' . HOST . '/bashupload/files/' . $file['id'] . '/' . $file['name'];
 		echo "wget {$url}" . "\n\n";
 	}
 	
