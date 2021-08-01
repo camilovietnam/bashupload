@@ -12,7 +12,7 @@ $docs_handler = __DIR__ . '/../../bashupload-docs/index.php';
 $action = 'default';
 
 if (in_array($_SERVER['REQUEST_METHOD'], ['POST', 'PUT'])) {
-  $action = 'upload';
+    $action = 'upload';
 } elseif ($uri != BASE_WEB) {
     $action = 'file';
 }
@@ -29,6 +29,7 @@ if (isset($_POST['json']) && $_POST['json'] == 'true') {
 }
 
 $action_handler = __DIR__ . "/../actions/{$action}.php";
+
 if (is_file($action_handler)) {
   include $action_handler;
 }

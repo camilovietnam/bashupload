@@ -43,7 +43,7 @@ foreach ($_FILES as $key_file => $file)
 	$uploads[] = uploadFile($id, $file, $rewrite_id, $key_file);
 }
 
-function uploadFile ($id, $file, $rewrite_id, $key_file): array
+function uploadFile ($id, $file, $rewriteId, $keyFile): array
 {
     # make file name safe
     $file['name'] = str_replace(['/', '-'], '_', trim($file['name'], '/'));
@@ -58,11 +58,11 @@ function uploadFile ($id, $file, $rewrite_id, $key_file): array
     rename($file['tmp_name'], $destination);
 
     return [
-        'id' => ($rewrite_id ? : $id),
+        'id' => ($rewriteId ? : $id),
         'name' => $file['name'],
         'path' => $destination,
         'size' => filesize($destination),
-        'upload_name' => $key_file,
-        'is_rewritten' => $rewrite_id,
+        'upload_name' => $keyFile,
+        'is_rewritten' => $rewriteId,
     ];
 }

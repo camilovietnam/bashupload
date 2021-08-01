@@ -9,7 +9,7 @@ $filePath = STORAGE . '/' . md5($file['path']);
 $file['size'] = is_file($filePath) ? filesize($filePath) : 0;
 
 # download stats
-$downloadMarkFile = $filePath . '.delete';
+$downloadMarkFile = "$filePath.delete";
 
 if (is_file($downloadMarkFile)) {
   $downloads = (int)file_get_contents($downloadMarkFile);
@@ -20,10 +20,10 @@ if (is_file($downloadMarkFile)) {
 # title for rendering info
 $title = htmlspecialchars($file['name']) . ' / download from scuti.vn';
 
-if (!$_GET['download'] && $renderer == 'html') {
+if (!$_GET['download'] && isset($renderer) && $renderer == 'html') {
 	# render
 	$sorry = !$file['size'];
-} else if ($file['size']) {
+} elseif ($file['size']) {
 	# direct download
 	setHeaders($file);
 	file_put_contents($downloadMarkFile, $downloads + 1); 

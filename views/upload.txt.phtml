@@ -2,13 +2,13 @@
 
 # Output streamed if was fed
 
-if ($error) {
+if (isset($error) && $error) {
 	echo "\n";
 	echo 'Error: ';
 	echo $error . "\n\n";
 }
 
-if ($uploads) {
+if (isset($uploads) && $uploads) {
 	echo "\n";
 	echo '=========================';
 	echo "\n\n";
