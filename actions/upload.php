@@ -40,14 +40,18 @@ function readFileData($f): void
     }
 }
 
-uploadFiles($id, $rewrite_id);
+$uploads = uploadFiles($id, $rewrite_id);
 
 function uploadFiles($id, $rewriteID)
 {
+    $uploads = [];
+
     foreach($_FILES as $keyFile => $file) {
         # Upload and register data
         $uploads[] = uploadFile($id, $file, $rewriteID, $keyFile);
     }
+
+    return $uploads;
 }
 
 function uploadFile($id, $file, $rewriteId, $keyFile): array
