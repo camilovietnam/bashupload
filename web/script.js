@@ -45,7 +45,7 @@ function upload_files(files) {
           var file_progress = document.querySelector("#" + file_key);
           file_progress.innerHTML = `File uploaded: 
                 <a target="_blank" href="${files[file_key].url}">${files[file_key].url}</a>
-                ${files[file_key].size} bytes`;
+                [${files[file_key].size} bytes]`;
           file_progress.classList.remove("uploading");
         }
 
@@ -71,13 +71,17 @@ function upload_files(files) {
 function uploading() {
   var elements = document.getElementsByClassName("uploading");
   for (var i = 0; i < elements.length; i++) {
-    if (elements[i].innerText == "Uploading...")
-      elements[i].innerText = "Uploading";
-    else if (elements[i].innerText == "Uploading")
-      elements[i].innerText = "Uploading.";
-    else if (elements[i].innerText == "Uploading.")
-      elements[i].innerText = "Uploading..";
-    else elements[i].innerText = "Uploading...";
+    if (elements[i].innerText == "Uploading...") {
+        elements[i].innerText = "Uploading";
+    } else {
+        elements[i].innerText = elements[i].innerText + ".";
+    }
+
+    // else if (elements[i].innerText == "Uploading")
+    //
+    // else if (elements[i].innerText == "Uploading.")
+    //   elements[i].innerText = "Uploading..";
+    // else elements[i].innerText = "Uploading...";
   }
 
   setTimeout(uploading, 1000);
