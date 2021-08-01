@@ -71,20 +71,20 @@ function upload_files(files) {
 function uploading() {
   var elements = document.getElementsByClassName("uploading");
   for (var i = 0; i < elements.length; i++) {
-    if (elements[i].innerText == "Uploading...") {
-        elements[i].innerText = "Uploading";
-    } else {
-        elements[i].innerText = elements[i].innerText + ".";
-    }
-
-    // else if (elements[i].innerText == "Uploading")
-    //
-    // else if (elements[i].innerText == "Uploading.")
-    //   elements[i].innerText = "Uploading..";
-    // else elements[i].innerText = "Uploading...";
+    updateUploadText(elements[i]);
   }
 
   setTimeout(uploading, 1000);
+}
+
+function updateUploadText(elm) {
+    if (elm.innerText == "Uploading...")
+        elm.innerText = "Uploading";
+    else if (elm.innerText == "Uploading")
+        elm.innerText = "Uploading.";
+    else if (elm.innerText == "Uploading.")
+        elm.innerText = "Uploading..";
+    else elm.innerText = "Uploading...";
 }
 
 // Initialize uploader and drag and drop listeners
